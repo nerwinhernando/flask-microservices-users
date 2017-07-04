@@ -35,5 +35,13 @@ def test():
         return 0
     return 1
 
+# docker-compose run users-service python manage.py seed_db
+@manager.command
+def seed_db():
+    """Seeds the database."""
+    db.session.add(User(username='michael', email="michael@realpython.com"))
+    db.session.add(User(username='michaelherman', email="michael@mherman.org"))
+    db.session.commit()
+
 if __name__ == '__main__':
     manager.run()
